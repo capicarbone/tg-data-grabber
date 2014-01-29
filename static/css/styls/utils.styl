@@ -1,0 +1,25 @@
+
+gradiente-linear(prefix, direccion, paradas... )
+	
+	paradas = join(", ", paradas)
+	'-%s-linear-gradient(%s, %s)' % (prefix direccion unquote(paradas))  
+
+
+bordes_redondeados(args)
+	border-radius: args
+	-moz-border-radius: args
+	-webkit-border-radius: args	
+
+sombra_caja(args)
+	-webkit-box-shadow: args
+	-moz-box-shadow: args
+	box-shadow: args
+
+escalar(alto, ancho)
+	-webkit-transform scale(alto,ancho)
+	transform scale(alto,ancho)s
+	
+	
+	
+	
+

@@ -1,0 +1,412 @@
+
+{% extends "boilerplate.html" %}
+
+{% block title %}
+	Tu Salud
+{% endblock %}
+
+{% block css %}
+
+	<link rel="stylesheet" href="static/css/tu-salud.css">
+    <link rel="stylesheet" href="static/css/foundation.min.css">
+
+{% endblock %}
+
+{% block content %}
+
+	<!-- Presentación -->
+
+	<section id="presentacion">
+
+	    <div class="row">
+
+	        <div class="small-12 large-6 columns">
+
+	            <div class="small-8 small-centered large-centered columns">
+
+	                <img src="static/images/logo.png" style="width: 100%" alt="">
+	            </div>
+
+	            <div class="small-12 columns regla-tres">
+	                <p>
+	                    Recuerde su tratamiento médico
+	                </p>
+	                <p>
+	                    Conozca cómo cumple su tratamiento
+	                </p>
+	                <p>
+	                    Integrado con su médico tratante
+	                </p>
+	            </div>
+
+	        </div>
+
+	        <div class="small-12 large-6 columns">
+	            <img src="static/images/tu-salud-presentacion.png" alt="">
+	        </div>
+
+	    </div>
+	</section>
+
+	<section id="que-es">
+	    <div class="row tarjeta">
+
+	        <div class="small-12 columns titulo">
+
+	             <div class="small-12 large-2 columns">
+	                <div class="panel franja"></div>
+	            </div>
+
+	            <div class="small-10 large-8 columns">
+	                <h2>¿Qué es Tu Salud?</h2>
+	            </div>
+
+	            <div class="small-2 large-2 columns">
+	                <span class="icono entypo-graduation-cap"></span>
+	            </div>
+
+	        </div>
+
+
+	        <div class="small-12 large-8 columns">
+	            <p>
+	                Tu Salud es una idea de aplicación móvil que desarrolla
+	                el Tglo. en Computación Carlos Pinelly como parte
+	                de su trabajo de grado para optar por su título de
+	                Ingeniero en Informática otorgado por la Universidad
+	                Nacional Experimental de Guayana (UNEG). La investigación
+	                a desarrollar tendrá como resultado una aplicación móvil, para
+	                celulares con Android, que apoye en el cumplimiento de tratamientos médicos en pacientes.
+	            </p>
+	        </div>
+	        <div class="small-12 large-4 columns">
+	            <img src="static/images/n4-uneg.png" alt="">
+	        </div>
+
+	    </div>
+	</section>
+
+	<section id="el-problema">
+	    <div class="row tarjeta">
+	        <div class="small-12 columns titulo">
+
+	            <div class="small-12 large-2 columns">
+	                <div class="panel franja"></div>
+	            </div>
+
+	            <div class="small-10 large-8 columns">
+	                <h2>El Problema</h2>
+	            </div>
+
+	            <div class="small-2 large-2 columns">
+	                <span class="icono entypo-search"></span>
+	            </div>
+
+	        </div>
+
+	        <div class="contenido">
+	            <div class="small-12 large-4 columns">
+	                <img src="static/images/oms.gif" alt="">
+	            </div>
+	            <div class="small-12 large-8 columns">
+	                <p>
+	                    Según la OMS "más del 50% de las personas con una
+	                    enfermedad crónica no cumple su tratamiento" esto lo
+	                    ha llevado a catalogar como "un problema de salud pública
+	                    de primera magnitud". Numerosas causas se han estudiado
+	                    para que un paciente no cumpla su tratamiento, entre las que tenemos: olvido, cansancio del mismo, poco entendimiento
+	                    del tratamiento y poca integración con el médico tratante.
+	                    El incumplimiento del tratamienteo trae considerables consecuencias como lo son: empeoramiento de la calidad de vida del paciente, dificultad en el control de la enfermedad, aumento de la posibilidad de fallecimiento, mayor probabilidad de recaídas, incremento del uso de recursos socio-sanitarios y posible disminución de la eficacia del tratamiento.
+	                </p>
+	            </div>
+	        </div>
+
+	    </div>
+	</section>
+
+	<!-- La solución -->
+
+	<section id="la-solucion">
+	    <div class="row tarjeta">
+	        <div class="small-12 columns titulo">
+
+	            <div class="small-12 large-2 columns">
+	                <div class="panel franja"></div>
+	            </div>
+
+	            <div class="small-10 large-8 columns">
+	                <h2>Solución propuesta</h2>
+	            </div>
+
+	            <div class="small-2 large-2 columns">
+	                <span class="icono entypo-pencil"></span>
+	            </div>
+
+	        </div>
+	        <div class="row">
+	            <div class="small-12 large-8 columns">
+	                <p>
+	                    En vista del uso cotidiano de los teléfonos móviles, se plantea
+	                    desarrollar una aplicación móvil que ayude a un paciente a
+	                    cumplir su tratamiento médico, además de indicarle al médico
+	                    tratante cómo se está cumpliendo.
+	                </p>
+
+	                <p>
+	                    La aplicación le mostrará al paciente las acciones
+	                    que debe realizar en el día con respecto a su tratamiento, como toma de medicamentos, citas, terapias o revisiones de ciertos parámetros como puede ser la presión arterial. Cada una de estas
+	                    acciones se mostrará acompañada por su respectiva hora de realización.
+	                </p>
+	                <p>
+	                    Además de ello, emitirá recordatorios cuando llegue o se acerqué la hora en la que deba realizarse la acción, evitando así el olvido del tratamiento.
+	                </p>
+	            </div>
+	            <div class="small-12 large-4 columns">
+	                <img src="static/images/hoy.png" alt="">
+	            </div>
+	        </div>
+
+	        <!-- <div class="row">
+	            <div class="small-12 large-5 columns dos-img">
+	                <img src="static/images/medicamentos.png" alt="">
+	                <img src="static/images/dieta.png" alt="">
+	            </div>
+	            <div class="small-12 large-7 columns">
+	                <p>
+	                    La aplicación tendrá la capacidad de almacenar toda la información
+	                    referente al tratamiento del paciente, como medicamentos a tomar, finalidad del tratamiento, dieta que debe serguir, terapias o citas con otros especialistas, chequeos que debe realizarse, entre otros.
+	                </p>
+	            </div>
+	        </div>  -->
+
+	         <div class="row">
+
+	            <div class="small-12 large-5 columns dos-img">
+	                <img src="static/images/cumplimiento.png" alt="">
+	                <img src="static/images/tension.png" alt="">
+	            </div>
+
+	            <div class="small-12 large-7 columns">
+	                <p>
+	                    Cada vez que la aplicación emita un recordatorio, por ejemplo, para la toma de medicamento,
+	                    esta le preguntará si se tomó el medicamento, si no pudo tomarlo o si decidió posponerlo. De esta forma, la aplicación, recaudará información sobre como el paciente está cumpliendo el tratamiento,
+	                    mostrando información mas especializada, como aquellas acciones con un bajo cumplimiento, nivel de cumplimiento del tratamiento, entre otros.
+	                </p>
+
+	                <p>
+	                    Algunas patologías requieren que los pacientes se realizen un chequeo de ciertos parámetros como puede ser la presión arterial o la glucemia. El paciente podrá introducir los resultados de estos
+	                    chequeos en la aplicación proporcionando nueva información.
+	                </p>
+	            </div>
+	        </div>
+
+	         <div class="row">
+	            <div class="small-12 large-7 columns">
+	                <p>
+	                    Toda la información recaudad y procesada por la aplicación podrá ser enviada periódicamente al médico tratante en forma de reporte a través de un correo a lo largo de la duración del tratamiento. De esta forma, se plantea que el médico tratante pueda recibir información para mejorar el tratamiendo del paciente o detectar debilidades en este.
+	                </p>
+	                <p>
+	                    También se espera que el paciente, al tener una mayor percepción de vigilancia u observancia por parte del médico, este mejore su cumplimiento del tratamiento.
+	                </p>
+	            </div>
+	            <div class="small-12 large-5 columns doctor">
+	                <img src="static/images/medico-revisando.png" alt="">
+	            </div>
+	        </div>
+
+	    </div>
+	</section>
+
+	<!-- Quien soy -->
+
+	<section id="quien-soy">
+
+	    <div class="row tarjeta">
+	        <div class="small-12 columns titulo">
+
+	            <div class="small-12 large-2 columns">
+	                <div class="panel franja"></div>
+	            </div>
+
+	            <div class="small-10 large-8 columns">
+	                <h2>¿Quién soy?</h2>
+	            </div>
+
+	            <div class="small-2 large-2 columns">
+	                <span class="icono entypo-user"></span>
+	            </div>
+
+	        </div>
+	        <div class="small-12 large-9 columns">
+	            <p>
+	                Mi nombre es Carlos Pinelly. Soy estudiante de Ingeniería Informática en la Universidad Nacional
+	                Experimental de Guayana, egresado como Tecnólogo en Computación y también preparador docente en materias del área de informática. Emprendedor y apasionado por su carrera, percibo la informática como una excelente herramienta para ofrecer soluciones a la sociedad. Disfruto de mi carrera en las áreas de la computación gráfica, el desarrollo web y el desarrollo móvil.
+	            </p>
+	        </div>
+	        <div class="small-12 large-3 columns">
+	            <img src="static/images/yo.png" alt="">
+	        </div>
+	    </div>
+
+	</section>
+
+	<!-- Apoyame-->
+
+	<section id="apoyame">
+
+	    <div class="row tarjeta">
+	        <div class="small-12 columns titulo">
+
+	            <div class="small-12 large-2 columns">
+	                <div class="panel franja"></div>
+	            </div>
+
+	            <div class="small-10 large-8 columns">
+	                <h2>Puedes apoyarme</h2>
+	            </div>
+
+	            <div class="small-2 large-2 columns">
+	                <span class="icono entypo-star"></span>
+	            </div>
+
+	        </div>
+
+	        <div class="small-12 columns">
+	        	<p>
+	        		En este momento necesito realizar algunas encuestas a doctores que prescriban tratamientos médicos. Si usted es doctor(a) y está dispuesto a realizar la encuesta electrónica puede llenar los datos del formulario, el cuál es sólo para verificar y así poder enviarle la encuesta.
+	        	</p>
+	            <a id="i_want_help" class="button expand radius mi-boton">
+	                <i class="entypo-user-add"></i>
+	                Soy Doctor, quiero apoyar
+	            </a>
+	        </div>
+
+	        <div class="small-12 large-7 columns">
+	            <form action="">
+	                <div class="row collapse">
+	                    <div class="small-3 large-3 columns">
+	                        <span class="prefix">Dr(a).</span>
+	                    </div>
+	                    <div class="small-9 large-9 columns">
+	                        <input id="full_name" type="text" name="full_name" placeholder="Su nombre y apellido">
+	                    </div>
+	                </div>
+	                <div class="row collapse">
+	                    <div class="small-3 large-3 columns">
+	                        <span class="prefix">Especialidad</span>
+	                    </div>
+	                    <div class="small-9 large-9 columns">
+	                        <input id="specialities" type="text" name="specialities" placeholder="Especialidades que ejerce">
+	                    </div>
+	                </div>
+	                <div class="row collapse">
+	                    <div class="small-3 large-3 columns">
+	                        <span class="prefix">Correo</span>
+	                    </div>
+	                    <div class="small-9 large-9 columns">
+	                        <input id="email" type="text" name="email" placeholder="Correo en donde recibirá la encuesta electrónica">
+	                    </div>
+	                </div>
+
+	                <a id="invite_doctor" class="button expand radius mi-boton">
+	                    <i class="entypo-user-add"></i>
+	                    Invitar a doctor
+	                </a>
+	            </form>
+	        </div>
+	        <div class="small-12 large-5 columns">
+	            <p>
+	                En este momento necesito realizar algunas encuestas a doctores que prescriban tratamientos médicos. Si usted es doctor(a) y está dispuesto a realizar la encuesta electrónica puede llenar los datos del formulario, el cuál es sólo para verificar y así poder enviarle la encuesta.
+
+	            </p>
+	        </div>
+	        <div class="small-12 columns">
+	            <p>
+	                Igualmente si usted es paciente o doctor y quisiera probar la aplicación que desarrollo, o sólo darme un punto de vista, puede contactarme, estaré muy agradecido de cualquier apoyo que pueda recibir para mi investigación.
+	            </p>
+	        </div>
+	    </div>
+
+	</section>
+
+	<footer>
+	    <div class="footer">
+	        <div class="row">
+	            <div class="small-12 columns">
+	                <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#presentacion">
+	                        <h3>
+	                            Inicio
+	                        </h3>
+	                    </a>
+	                </div>
+
+	                <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#que-es">
+	                        <h3>
+	                            ¿Qué es?
+	                        </h3>
+	                    </a>
+	                </div>
+
+	                <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#el-problema">
+	                        <h3>
+	                            El problema
+	                        </h3>
+	                    </a>
+	                </div>
+
+	                 <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#la-solucion">
+	                        <h3>
+	                            La solución
+	                        </h3>
+	                    </a>
+	                </div>
+
+	                <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#quien-soy">
+	                        <h3>
+	                            Sobre mí
+	                        </h3>
+	                    </a>
+	                </div>
+
+	                <div class="small-12 large-2 small-centered large-uncentered columns">
+	                    <a href="#apoyame">
+	                        <h3>
+	                            Apóyame
+	                        </h3>
+	                    </a>
+	                </div>
+	            </div>
+	        </div>
+
+	    </div>
+	    <div id="final">
+	        <div class="row" >
+	            <div class="small-12 small-centered columns">
+	                Sitio diseñado por Carlos Pinelly
+	            </div>
+	        </div>
+	    </div>
+
+	</footer>
+
+
+
+{% endblock %}
+
+{% block js %}
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+	<script src="static/js/main.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=init_endpoints"></script>
+	<script src="static/js/jquery.color.min.js"></script>
+
+{% endblock %}
+
+

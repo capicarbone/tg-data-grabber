@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Doctor Form</title>
+</head>
+<body>
+	<h1>Formulario para un doctor</h1>
+
+	Nombres: <input type="text" name="first_name" /><br />
+	Apellidos: <input type="text" name="last_name" /><br />
+	Email: <input type="text" name="email" />
+
+	<script>
+		function init(){
+
+
+			var ROOT = 'https://capicptest.appspot.com/_ah/api';
+			gapi.client.load('doctors', 'v1', function() {
+				alert("Hola");
+			}, ROOT);
+		}
+
+	</script>
+
+
+
+
+	<script src="https://apis.google.com/js/client.js?onload=init">
+	</script>
+
+</body>
+</html>
