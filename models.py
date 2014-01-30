@@ -12,6 +12,7 @@ class Doctor(db.Model):
     email = db.EmailProperty(required=True)
     sent = db.BooleanProperty(default=False)
     want_test = db.BooleanProperty(default=False)
+    poll_open = db.BooleanProperty(default=False)
     user = db.StringProperty()
 
 

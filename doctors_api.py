@@ -19,28 +19,33 @@ class DoctorMessage(messages.Message):
     full_name = messages.StringField(1)
     specialities = messages.StringField(2)
     email = messages.StringField(3)
+    sent = messages.BooleanField(4)
+    want_test = messages.BooleanField(5)
+    poll_open = messages.BooleanField(6)
 
 class DoctorsCollection(messages.Message):
     doctors = messages.MessageField(DoctorMessage, 1, repeated=True)
 
-DOCTORS = DoctorsCollection(doctors=[
-                                   DoctorMessage(full_name='Miguel', specialities="cardiologo"),
-                                   DoctorMessage(full_name='Jose', specialities='oncologo'),
-                                   ])
 
 @endpoints.api(name="doctors", version='v1')
 class DoctorsApi(remote.Service):
 
     @endpoints.method(message_types.VoidMessage, DoctorsCollection,
                       path='doctors', http_method='GET',
-                      name="doctors.all")
+                      name="all")
     def doctors_list(self, request):
         doctors = Doctor.all()
 
         doctors_message = []
 
         for d in doctors:
-            doctors_message.append(DoctorMessage(first_name=d.first_name, last_name=d.last_name))
+            doctors_message.append(DoctorMessage(full_name=d.full_name,
+                                                 sent = d.sent,
+                                                 email = d.email,
+                                                 specialities = d.specialities,
+                                                 want_test = d.want_test,
+                                                 poll_open = d.poll_open
+                                                 ))
 
 
         return DoctorsCollection(doctors=doctors_message)
@@ -50,15 +55,6 @@ class DoctorsApi(remote.Service):
             message_types.VoidMessage,
             id=messages.IntegerField(1, variant=messages.Variant.INT32))
 
-
-    @endpoints.method(ID_RESOURCE, DoctorMessage,
-                      path='doctor/{id}', http_method='GET',
-                      name='get')
-    def doctor_get(self, request):
-        try:
-            return DOCTORS.doctors[request.id]
-        except (IndexError, TypeError):
-            raise endpoints.NotFoundException('Doctor %s no encontrado.' % (request.id))
 
     FIELDS_RESOURCE = endpoints.ResourceContainer(DoctorMessage)
 
@@ -72,6 +68,11 @@ class DoctorsApi(remote.Service):
         d.put()
 
         return DoctorMessage(full_name=d.full_name, specialities=d.specialities, email=d.email)
+
+
+    # Especificar método
+    def send_email(self, request):
+        pass
 
 
 APPLICATION = endpoints.api_server([DoctorsApi])

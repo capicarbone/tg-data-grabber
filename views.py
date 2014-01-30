@@ -7,20 +7,23 @@ import os
 
 from google.appengine.api import users
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import template
 
+import jinja2
+
+JINJA_ENVIROMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True
+)
 
 class MainPage(webapp.RequestHandler):
     def get(self):
 
-        path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
-
-        self.response.out.write(template.render(path, {}))
+        template = JINJA_ENVIROMENT.get_template('index.html')
+        self.response.out.write(template.render({}))
 
 
 class ListDoctorsPage(webapp.RequestHandler):
-
-    ADMIN_EMAIL = 'cpinelly@gmail.com'
 
     def get(self):
 
@@ -28,8 +31,8 @@ class ListDoctorsPage(webapp.RequestHandler):
 
         if user:
             if users.is_current_user_admin():
-                path = os.path.join(os.path.dirname(__file__), 'templates/doctors_list.html')
-                self.response.out.write(template.render(path, {}))
+                template = JINJA_ENVIROMENT.get_template('doctors_list.html')
+                self.response.out.write(template.render({}))
             else:
                 self.redirect('/')
         else:

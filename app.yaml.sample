@@ -15,3 +15,5 @@ handlers:
 libraries:
 - name: endpoints
   version: 1.0
+- name: jinja2
+  version: latest
