@@ -10,6 +10,8 @@ from models import Doctor
 from protorpc import message_types, messages, remote
 from protorpc.message_types import VoidMessage
 
+from google.appengine.api import mail
+
 
 package = "Hello"
 
@@ -27,7 +29,8 @@ class DoctorsCollection(messages.Message):
     doctors = messages.MessageField(DoctorMessage, 1, repeated=True)
 
 
-@endpoints.api(name="doctors", version='v1')
+@endpoints.api(name="doctors", version='v1',
+               description='Api para la gestión de doctores y sus encuestas.')
 class DoctorsApi(remote.Service):
 
     @endpoints.method(message_types.VoidMessage, DoctorsCollection,
@@ -70,9 +73,29 @@ class DoctorsApi(remote.Service):
         return DoctorMessage(full_name=d.full_name, specialities=d.specialities, email=d.email)
 
 
-    # Especificar método
+    EMAIL_RESOURCE = endpoints.ResourceContainer(message_types.VoidMessage,
+                                                email=messages.StringField(1))
+
+    @endpoints.method(EMAIL_RESOURCE, message_types.VoidMessage,
+                      path="doctorsend",
+                      name="send_email")
     def send_email(self, request):
-        pass
+
+        to_email = request.email
+
+        doctor = Doctor.all().filter("email =",to_email)[0]
+
+        if (mail.is_email_valid(to_email) and doctor):
+
+            from_email = "Carlos Pinelly <cpinelly@gmail.com>"
+            subject = "Encuesta"
+            body = """
+                Esto es una prueba Sr. %s.
+            """ % (doctor.full_name)
+
+            mail.send_mail(from_email, to_email, subject, body)
+
+        return message_types.VoidMessage()
 
 
 APPLICATION = endpoints.api_server([DoctorsApi])

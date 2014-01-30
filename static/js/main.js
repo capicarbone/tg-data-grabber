@@ -93,9 +93,9 @@ $(document).ready(function(){
 });
 
 function init_endpoints(){
-	//var ROOT = 'https://capicptest.appspot.com/_ah/api';
+	var ROOT = 'https://capicptest.appspot.com/_ah/api';
 	var host = window.location.host;
-	var ROOT = '//' + host + '/_ah/api';
+	//var ROOT = '//' + host + '/_ah/api';
 	gapi.client.load('doctors', 'v1', function() {
 
 	}, ROOT);
