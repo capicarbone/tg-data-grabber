@@ -1,5 +1,9 @@
 {% extends "boilerplate.html" %}
 
+{% block title %}
+	Amministratore
+{% endblock %}
+
 {% block css %}
 	<link rel="stylesheet" href="static/css/bootstrap.min.css">
 	<link rel="stylesheet" href="static/css/bootstrap-theme.css">
@@ -25,7 +29,7 @@
 						<td>{{doctor.specialities}}</td>
 						<td>{{doctor.email}}</td>
 						<td>
-							<button type="button" class="btn btn-primary" ng-click="send_email(doctor.email)">Enviar encuesta</button>
+							<button type="button" class="btn btn-primary" ng-click="send_email(doctor)">Enviar encuesta</button>
 						</td>
 					</tr>
 				</table>

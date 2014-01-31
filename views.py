@@ -17,7 +17,7 @@ JINJA_ENVIROMENT = jinja2.Environment(
 )
 
 class MainPage(webapp.RequestHandler):
-    def get(self):
+    def get(self, name):
 
         template = JINJA_ENVIROMENT.get_template('index.html')
         self.response.out.write(template.render({}))
@@ -37,6 +37,7 @@ class ListDoctorsPage(webapp.RequestHandler):
                 self.redirect('/')
         else:
             self.redirect(users.create_login_url(self.request.uri))
+
 
 
 

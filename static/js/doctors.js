@@ -24,8 +24,12 @@ function DoctorsCtrl($scope, $window){
 		});
 	};
 
-	$scope.send_email = function(r){
-		$window.alert(r);
+	$scope.send_email = function(doctor){
+		gapi.client.doctors.send_email({email:doctor.email}).execute(function(){
+			doctor.sent = true;
+			$scope.$apply();
+
+		});
 	};
 
 	$scope.doctors = [];

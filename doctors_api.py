@@ -68,6 +68,7 @@ class DoctorsApi(remote.Service):
                       )
     def doctors_save(self, request):
         d = Doctor(full_name=request.full_name, specialities=request.specialities, email=request.email)
+        d.user = d.email.split('@')[0]
         d.put()
 
         return DoctorMessage(full_name=d.full_name, specialities=d.specialities, email=d.email)
@@ -94,6 +95,29 @@ class DoctorsApi(remote.Service):
             """ % (doctor.full_name)
 
             mail.send_mail(from_email, to_email, subject, body)
+
+            doctor.sent = True
+            doctor.put()
+
+        return message_types.VoidMessage()
+
+    @endpoints.method(EMAIL_RESOURCE, message_types.VoidMessage,
+                      path="poll_opened", name="poll_opened")
+    def poll_opened(self, request):
+
+        doctor = Doctor.all().filter("user =", request.email)[0]
+        doctor.poll_open = True
+        doctor.put()
+
+        return message_types.VoidMessage()
+
+    @endpoints.method(EMAIL_RESOURCE, message_types.VoidMessage,
+                  path="want_test", name="want_test")
+    def want_test(self, request):
+
+        doctor = Doctor.all().filter("user =", request.email)[0]
+        doctor.want_test = True
+        doctor.put()
 
         return message_types.VoidMessage()
 

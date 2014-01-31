@@ -1,5 +1,6 @@
 
 var contenidos;
+var host_user;
 var activo = -1;
 
 function patalla_ancho(){
@@ -57,9 +58,22 @@ function cambiar_seccion() {
 	}
 }
 
+function get_user(){
+
+	var url_split = document.URL.split('/');
+	var length = url_split.length;
+
+	if (url_split[length-1] != window.location.host){
+		return url_split[length-1];
+	}else
+		return '';
+}
+
 $(document).ready(function(){
 
 	contenidos = [];
+	host_user = get_user();
+
 
 	$(".tarjeta").each(function(i, e){
 
@@ -90,12 +104,19 @@ $(document).ready(function(){
 		});
 
 	});
+
+	$("#i_want_help").click(function(){
+
+		gapi.client.doctors.poll_opened({email: host_user}).execute(function(){
+
+		});
+	});
 });
 
 function init_endpoints(){
-	var ROOT = 'https://capicptest.appspot.com/_ah/api';
+	//var ROOT = 'https://capicptest.appspot.com/_ah/api';
 	var host = window.location.host;
-	//var ROOT = '//' + host + '/_ah/api';
+	var ROOT = '//' + host + '/_ah/api';
 	gapi.client.load('doctors', 'v1', function() {
 
 	}, ROOT);
