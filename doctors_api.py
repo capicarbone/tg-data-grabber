@@ -22,8 +22,7 @@ class DoctorMessage(messages.Message):
     specialities = messages.StringField(2)
     email = messages.StringField(3)
     sent = messages.BooleanField(4)
-    want_test = messages.BooleanField(5)
-    poll_open = messages.BooleanField(6)
+    poll_open = messages.BooleanField(5)
 
 class DoctorsCollection(messages.Message):
     doctors = messages.MessageField(DoctorMessage, 1, repeated=True)
@@ -46,7 +45,6 @@ class DoctorsApi(remote.Service):
                                                  sent = d.sent,
                                                  email = d.email,
                                                  specialities = d.specialities,
-                                                 want_test = d.want_test,
                                                  poll_open = d.poll_open
                                                  ))
 
@@ -91,8 +89,8 @@ class DoctorsApi(remote.Service):
             from_email = "Carlos Pinelly <cpinelly@gmail.com>"
             subject = "Encuesta"
             body = """
-                Esto es una prueba Sr. %s.
-            """ % (doctor.full_name)
+                Esto es una prueba Sr. %s. Entre a la url http://capicptest.appspot.com/%s
+            """ % (doctor.full_name, doctor.user)
 
             mail.send_mail(from_email, to_email, subject, body)
 
@@ -110,17 +108,6 @@ class DoctorsApi(remote.Service):
         doctor.put()
 
         return message_types.VoidMessage()
-
-    @endpoints.method(EMAIL_RESOURCE, message_types.VoidMessage,
-                  path="want_test", name="want_test")
-    def want_test(self, request):
-
-        doctor = Doctor.all().filter("user =", request.email)[0]
-        doctor.want_test = True
-        doctor.put()
-
-        return message_types.VoidMessage()
-
 
 APPLICATION = endpoints.api_server([DoctorsApi])
 

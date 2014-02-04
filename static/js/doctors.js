@@ -9,6 +9,7 @@ function DoctorsCtrl($scope, $window){
 
 		var host = window.location.host;
 		var ROOT = '//' + host + '/_ah/api';
+		//var ROOT = 'https://capicptest.appspot.com/_ah/api';
 
 		gapi.client.load('doctors', 'v1', function() {
 			$scope.is_backend_ready = true;

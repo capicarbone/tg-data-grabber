@@ -41,7 +41,6 @@
 						<th>Especialidades</th>
 						<th>Correo</th>
 						<th>Encuesta abierta</th>
-						<th>Quiere probar?</th>
 						<th></th>
 					</tr>
 					<tr ng-repeat="doctor in doctors | filter:{sent:true}">
@@ -52,11 +51,6 @@
 							<span class="glyphicon glyphicon-ok" ng-show="doctor.poll_open"></span>
 							<span class="glyphicon glyphicon-remove" ng-show="!doctor.poll_open"></span>
 						</td>
-						<td>
-							<span class="glyphicon glyphicon-ok" ng-show="doctor.want_test"></span>
-							<span class="glyphicon glyphicon-remove" ng-show="!doctor.want_test"></span>
-						</td>
-
 					</tr>
 				</table>
 
