@@ -2,6 +2,9 @@
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
 }
+.center {
+  text-align: center;
+}
 * {
   margin: 0px;
   padding: 0px;

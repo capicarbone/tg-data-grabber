@@ -105,7 +105,7 @@ class DoctorsApi(remote.Service):
                       path="poll_opened", name="poll_opened")
     def poll_opened(self, request):
 
-        doctor = Doctor.all().filter("user =", request.email)[0]
+        doctor = Doctor.all().filter("user =", request.email)
         doctor.poll_open = True
         doctor.put()
 

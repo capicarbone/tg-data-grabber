@@ -8,6 +8,8 @@ import os
 from google.appengine.api import users
 from google.appengine.ext import webapp
 
+from models import *
+
 import jinja2
 
 JINJA_ENVIROMENT = jinja2.Environment(
@@ -19,8 +21,17 @@ JINJA_ENVIROMENT = jinja2.Environment(
 class MainPage(webapp.RequestHandler):
     def get(self, name):
 
-        template = JINJA_ENVIROMENT.get_template('index.html')
-        self.response.out.write(template.render({}))
+        query = Doctor.all().filter("user =", name).fetch(1)
+
+        html = ""
+
+        if len(query) > 0 or users.is_current_user_admin():
+            template = JINJA_ENVIROMENT.get_template('index.html')
+            html = template.render({})
+        else:
+            html = "<h1>Acceso denegado</h1>"
+
+        self.response.out.write(html)
 
 
 class ListDoctorsPage(webapp.RequestHandler):
