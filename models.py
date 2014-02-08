@@ -13,5 +13,6 @@ class Doctor(db.Model):
     sent = db.BooleanProperty(default=False)
     poll_open = db.BooleanProperty(default=False)
     user = db.StringProperty()
+    invited_by = db.StringProperty()
 
 

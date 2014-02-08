@@ -23,6 +23,7 @@ class DoctorMessage(messages.Message):
     email = messages.StringField(3)
     sent = messages.BooleanField(4)
     poll_open = messages.BooleanField(5)
+    invited_by = messages.StringField(6)
 
 class DoctorsCollection(messages.Message):
     doctors = messages.MessageField(DoctorMessage, 1, repeated=True)
@@ -45,7 +46,8 @@ class DoctorsApi(remote.Service):
                                                  sent = d.sent,
                                                  email = d.email,
                                                  specialities = d.specialities,
-                                                 poll_open = d.poll_open
+                                                 poll_open = d.poll_open,
+                                                 invited_by = d.invited_by
                                                  ))
 
 
@@ -65,7 +67,7 @@ class DoctorsApi(remote.Service):
                       name="save"
                       )
     def doctors_save(self, request):
-        d = Doctor(full_name=request.full_name, specialities=request.specialities, email=request.email)
+        d = Doctor(full_name=request.full_name, specialities=request.specialities, email=request.email, invited_by=request.invited_by)
         d.user = d.email.split('@')[0]
         d.put()
 

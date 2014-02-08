@@ -69,6 +69,19 @@ function get_user(){
 		return '';
 }
 
+function show_notification(message){
+
+	var notificator_el = document.getElementById("notificator");
+
+	notificator_el.innerHTML = message;
+	$(notificator_el).addClass("show");
+
+	setTimeout(function(){
+		$(notificator_el).removeClass("show");
+	}, 3000);
+}
+
+
 $(document).ready(function(){
 
 	contenidos = [];
@@ -95,12 +108,21 @@ $(document).ready(function(){
 
 		var doctor_info = {};
 
-		doctor_info.full_name = document.getElementById("full_name").value;
-		doctor_info.specialities = document.getElementById("specialities").value;
-		doctor_info.email = document.getElementById("email").value;
+		var full_name_el = document.getElementById("full_name");
+		var specialities_el = document.getElementById("specialities");
+		var email_el = document.getElementById("email");
+
+		doctor_info.full_name = full_name_el.value;
+		doctor_info.specialities = specialities_el.value;
+		doctor_info.email = email_el.value;
+		doctor_info.invited_by = get_user();
 
 		gapi.client.doctors.save(doctor_info).execute(function(response){
-			console.log(response);
+			full_name_el.value = "";
+			specialities_el.value = "";
+			email_el.value = "";
+
+			show_notification("¡Recibido! Muchas gracias");
 		});
 
 	});
@@ -108,7 +130,7 @@ $(document).ready(function(){
 	$("#i_want_help").click(function(){
 
 		gapi.client.doctors.poll_opened({email: host_user}).execute(function(){
-
+			window.open("http://www.google.com", '_blank');
 		});
 	});
 });
