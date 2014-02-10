@@ -117,20 +117,23 @@ $(document).ready(function(){
 		doctor_info.email = email_el.value;
 		doctor_info.invited_by = get_user();
 
-		gapi.client.doctors.save(doctor_info).execute(function(response){
-			full_name_el.value = "";
-			specialities_el.value = "";
-			email_el.value = "";
+		if (doctor_info.full_name === "" || doctor_info.specialities === "" || doctor_info.email === "" ){
+			show_notification("Debe rellenar todos los campos");
+		}else
+			gapi.client.doctors.save(doctor_info).execute(function(response){
+				full_name_el.value = "";
+				specialities_el.value = "";
+				email_el.value = "";
 
-			show_notification("¡Recibido! Muchas gracias");
-		});
+				show_notification("Recibido, muchas gracias.");
+			});
 
 	});
 
 	$("#i_want_help").click(function(){
 
 		gapi.client.doctors.poll_opened({email: host_user}).execute(function(){
-			window.open("http://www.google.com", '_blank');
+
 		});
 	});
 });

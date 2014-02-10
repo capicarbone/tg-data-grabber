@@ -15,6 +15,21 @@ from google.appengine.api import mail
 
 package = "Hello"
 
+email_body = """
+
+    Buenas Dr(a). %s,
+
+    Mi nombre es Carlos Pinelly. Soy estudiante de la Universidad Nacional Experimental de Guayana (UNEG). Actualmente
+    me encuentro realizando mi trabajo de grado para optar a mi título de Ingeniero en Informática. Mi investigación
+    está orientada al desarrollo de una aplicación móvil dirigida a la área médica y quizás usted podría ayudarme. En el
+    siguiente enlace encontrará los detalles sobre la investigación y de como podría apoyarme.
+
+    http://tusaludapp.appspot.com/%s
+
+    Sin mas que decir, me despido agradeciendo su apoyo en mi investigación.
+
+    Saludos.
+"""
 
 
 class DoctorMessage(messages.Message):
@@ -90,9 +105,7 @@ class DoctorsApi(remote.Service):
 
             from_email = "Carlos Pinelly <cpinelly@gmail.com>"
             subject = "Encuesta"
-            body = """
-                Esto es una prueba Sr. %s. Entre a la url http://capicptest.appspot.com/%s
-            """ % (doctor.full_name, doctor.user)
+            body = email_body % (doctor.full_name, doctor.user)
 
             mail.send_mail(from_email, to_email, subject, body)
 
@@ -105,7 +118,7 @@ class DoctorsApi(remote.Service):
                       path="poll_opened", name="poll_opened")
     def poll_opened(self, request):
 
-        doctor = Doctor.all().filter("user =", request.email)
+        doctor = Doctor.all().filter("user =", request.email)[0]
         doctor.poll_open = True
         doctor.put()
 
