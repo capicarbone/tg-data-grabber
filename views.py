@@ -19,7 +19,7 @@ JINJA_ENVIROMENT = jinja2.Environment(
 )
 
 class MainPage(webapp.RequestHandler):
-    def get(self, name):
+    def get(self, name=""):
 
         query = Doctor.all().filter("user =", name).fetch(1)
 

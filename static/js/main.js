@@ -117,8 +117,8 @@ $(document).ready(function(){
 		doctor_info.email = email_el.value;
 		doctor_info.invited_by = get_user();
 
-		if (doctor_info.full_name === "" || doctor_info.specialities === "" || doctor_info.email === "" ){
-			show_notification("Debe rellenar todos los campos");
+		if (doctor_info.full_name === ""  || doctor_info.email === "" ){
+			show_notification("Debe rellenar los campos de nombre y correo.");
 		}else
 			gapi.client.doctors.save(doctor_info).execute(function(response){
 				full_name_el.value = "";
@@ -133,15 +133,16 @@ $(document).ready(function(){
 	$("#i_want_help").click(function(){
 
 		gapi.client.doctors.poll_opened({email: host_user}).execute(function(){
-
+			var user = get_user();
+			ga('send', 'event', 'Apoyos', 'WantHelp', user);
 		});
 	});
 });
 
 function init_endpoints(){
-	//var ROOT = 'https://capicptest.appspot.com/_ah/api';
-	var host = window.location.host;
-	var ROOT = '//' + host + '/_ah/api';
+	var ROOT = 'https://tusaludapp.appspot.com/_ah/api';
+	//var host = window.location.host;
+	//var ROOT = '//' + host + '/_ah/api';
 	gapi.client.load('doctors', 'v1', function() {
 
 	}, ROOT);

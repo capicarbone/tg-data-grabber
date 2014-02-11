@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding:utf-8 -*-
 
 '''
 Created on 22/01/2014
@@ -15,7 +15,7 @@ from google.appengine.api import mail
 
 package = "Hello"
 
-email_body = """
+email_body = u"""
 
     Buenas Dr(a). %s,
 
@@ -30,7 +30,6 @@ email_body = """
 
     Saludos.
 """
-
 
 class DoctorMessage(messages.Message):
     full_name = messages.StringField(1)
@@ -84,6 +83,14 @@ class DoctorsApi(remote.Service):
     def doctors_save(self, request):
         d = Doctor(full_name=request.full_name, specialities=request.specialities, email=request.email, invited_by=request.invited_by)
         d.user = d.email.split('@')[0]
+
+        capitalized_name =  ''
+
+        for name in d.full_name.split(' '):
+            capitalized_name = capitalized_name + name.capitalize() + ' '
+
+        d.full_name = capitalized_name
+
         d.put()
 
         return DoctorMessage(full_name=d.full_name, specialities=d.specialities, email=d.email)
@@ -104,7 +111,7 @@ class DoctorsApi(remote.Service):
         if (mail.is_email_valid(to_email) and doctor):
 
             from_email = "Carlos Pinelly <cpinelly@gmail.com>"
-            subject = "Encuesta"
+            subject = u"Apoyo para trabajo de investigación"
             body = email_body % (doctor.full_name, doctor.user)
 
             mail.send_mail(from_email, to_email, subject, body)

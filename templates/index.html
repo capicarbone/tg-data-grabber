@@ -158,26 +158,13 @@
 	                    acciones se mostrará acompañada por su respectiva hora de realización.
 	                </p>
 	                <p>
-	                    Además de ello, emitirá recordatorios cuando llegue o se acerqué la hora en la que deba realizarse la acción, evitando así el olvido del tratamiento.
+	                    Además de ello, emitirá recordatorios cuando llegue o se acerqué la hora en la que deba realizarse la acción, tratando así de evitar el olvido del tratamiento.
 	                </p>
 	            </div>
 	            <div class="small-12 large-4 columns">
 	                <img src="static/images/hoy.png" alt="">
 	            </div>
 	        </div>
-
-	        <!-- <div class="row">
-	            <div class="small-12 large-5 columns dos-img">
-	                <img src="static/images/medicamentos.png" alt="">
-	                <img src="static/images/dieta.png" alt="">
-	            </div>
-	            <div class="small-12 large-7 columns">
-	                <p>
-	                    La aplicación tendrá la capacidad de almacenar toda la información
-	                    referente al tratamiento del paciente, como medicamentos a tomar, finalidad del tratamiento, dieta que debe serguir, terapias o citas con otros especialistas, chequeos que debe realizarse, entre otros.
-	                </p>
-	            </div>
-	        </div>  -->
 
 	         <div class="row">
 
@@ -189,8 +176,8 @@
 	            <div class="small-12 large-7 columns">
 	                <p>
 	                    Cada vez que la aplicación emita un recordatorio, por ejemplo, para la toma de medicamento,
-	                    esta le preguntará si se tomó el medicamento, si no pudo tomarlo o si decidió posponerlo. De esta forma, la aplicación, recaudará información sobre como el paciente está cumpliendo el tratamiento,
-	                    mostrando información mas especializada, como aquellas acciones con un bajo cumplimiento, nivel de cumplimiento del tratamiento, entre otros.
+	                    esta le preguntará si se tomó el medicamento, si no pudo tomarlo o si decidió posponerlo. De esta forma, la aplicación, recaudará información sobre cómo el paciente está cumpliendo el tratamiento,
+	                    mostrando información mas especializada, como aquellas acciones con un bajo cumplimiento, nivel de cumplimiento del tratamiento general, entre otros.
 	                </p>
 
 	                <p>
@@ -203,7 +190,7 @@
 	         <div class="row">
 	            <div class="small-12 large-7 columns">
 	                <p>
-	                    Toda la información recaudad y procesada por la aplicación podrá ser enviada periódicamente al médico tratante en forma de reporte a través de un correo a lo largo de la duración del tratamiento. De esta forma, se plantea que el médico tratante pueda recibir información para mejorar el tratamiendo del paciente o detectar debilidades en este.
+	                    Toda la información recaudada y procesada por la aplicación podrá ser enviada periódicamente al médico tratante para ser visualizada en un sistema para la gestión de tratamientos a lo largo de la duración del mismo. De esta forma, se plantea que el médico tratante pueda recibir información para mejorar el tratamiendo del paciente o detectar debilidades en este.
 	                </p>
 	                <p>
 	                    También se espera que el paciente, al tener una mayor percepción de vigilancia u observancia por parte del médico, este mejore su cumplimiento del tratamiento.
@@ -286,10 +273,9 @@
 	       	<div class="small-12 large-5 columns">
 	            <p>
 					Igualmente le agradecería enormemente si pudiera recomendar esta página a otros doctores
-					que pudiesen estar interesados en mi investigación. Para hacerlo puede usar el siguiente formulario, el cual enviará al correo
-					el mismo que le fue enviado a usted. Evite compartir esta página mediante redes sociales o directamente por correo, esto facilitará el
-					seguimiento de la misma.
-
+					que pudiesen estar interesados en mi investigación. Para hacerlo puede usar el siguiente formulario, a partir del cual enviaré el mismo correo que le fue enviado a usted.
+					Evite compartir esta página mediante redes sociales o directamente por correo, esto facilitará el
+					seguimiento de la misma y de esta forma evitar que esta llegue a personas que no sean doctores.
 	            </p>
 	        </div>
 
@@ -446,6 +432,17 @@
 {% endblock %}
 
 {% block js %}
+
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-47954713-1', 'tusaludapp.appspot.com');
+		ga('send', 'pageview');
+
+	</script>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
