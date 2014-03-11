@@ -12,10 +12,7 @@ from protorpc.message_types import VoidMessage
 
 from google.appengine.api import mail
 
-
 package = "Hello"
-
-
 
 class DoctorMessage(messages.Message):
     full_name = messages.StringField(1)

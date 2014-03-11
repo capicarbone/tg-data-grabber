@@ -7,7 +7,7 @@ import views
 urls = [
         ('/', views.MainPage),
         ('/amministratore', views.ListDoctorsPage),
-        ('/(\w+)', views.MainPage),
+        ('/(\w+)', views.MainPageWithDoctor),
         ]
 
 

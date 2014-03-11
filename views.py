@@ -18,8 +18,8 @@ JINJA_ENVIROMENT = jinja2.Environment(
     autoescape=True
 )
 
-class MainPage(webapp.RequestHandler):
-    def get(self, name):
+class MainPageWithDoctor(webapp.RequestHandler):
+    def get(self, name=""):
 
         query = Doctor.all().filter("user =", name).fetch(1)
 
@@ -30,6 +30,14 @@ class MainPage(webapp.RequestHandler):
             html = template.render({})
         else:
             html = "<h1>Acceso denegado</h1>"
+
+        self.response.out.write(html)
+
+class MainPage(webapp.RequestHandler):
+    def get(self):
+
+        template = JINJA_ENVIROMENT.get_template('index.html')
+        html = template.render({})
 
         self.response.out.write(html)
 
