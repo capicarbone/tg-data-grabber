@@ -5,6 +5,27 @@
 .center {
   text-align: center;
 }
+#notificator {
+  position: fixed;
+  bottom: 30px;
+  right: 35%;
+  left: 35%;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  z-index: 10;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  opacity: 0;
+  transition: 1s all ease;
+}
+.show {
+  opacity: 1 !important;
+}
+strong a {
+  color: #424242;
+}
 * {
   margin: 0px;
   padding: 0px;

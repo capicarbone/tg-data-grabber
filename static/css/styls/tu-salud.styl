@@ -12,6 +12,28 @@ negro = #424242
 .center
 	text-align center
 
+#notificator
+	position fixed
+	bottom 30px
+	right 35%
+	left @right
+	background rgba(0,0,0,0.75)
+	color white
+	text-align center
+	border-radius 5px
+	z-index 10
+	padding-top 10px
+	padding-bottom 10px
+	opacity 0
+	transition 1s all ease
+
+.show
+	opacity 1 !important
+
+
+strong a
+	color negro
+
 degradado_footer()	
 	background: fondo;
 	background: -moz-linear-gradient(top, fondo 0%, fondo 14%, rgba(246,246,246,1) 40%, rgba(255,255,255,1) 88%, rgba(255,255,255,1) 100%);

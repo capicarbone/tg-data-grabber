@@ -69,6 +69,19 @@ function get_user(){
 		return '';
 }
 
+function show_notification(message){
+
+	var notificator_el = document.getElementById("notificator");
+
+	notificator_el.innerHTML = message;
+	$(notificator_el).addClass("show");
+
+	setTimeout(function(){
+		$(notificator_el).removeClass("show");
+	}, 3000);
+}
+
+
 $(document).ready(function(){
 
 	contenidos = [];
@@ -95,28 +108,41 @@ $(document).ready(function(){
 
 		var doctor_info = {};
 
-		doctor_info.full_name = document.getElementById("full_name").value;
-		doctor_info.specialities = document.getElementById("specialities").value;
-		doctor_info.email = document.getElementById("email").value;
+		var full_name_el = document.getElementById("full_name");
+		var specialities_el = document.getElementById("specialities");
+		var email_el = document.getElementById("email");
 
-		gapi.client.doctors.save(doctor_info).execute(function(response){
-			console.log(response);
-		});
+		doctor_info.full_name = full_name_el.value;
+		doctor_info.specialities = specialities_el.value;
+		doctor_info.email = email_el.value;
+		doctor_info.invited_by = get_user();
+
+		if (doctor_info.full_name === ""  || doctor_info.email === "" ){
+			show_notification("Debe rellenar los campos de nombre y correo.");
+		}else
+			gapi.client.doctors.save(doctor_info).execute(function(response){
+				full_name_el.value = "";
+				specialities_el.value = "";
+				email_el.value = "";
+
+				show_notification("Recibido, muchas gracias.");
+			});
 
 	});
 
 	$("#i_want_help").click(function(){
 
 		gapi.client.doctors.poll_opened({email: host_user}).execute(function(){
-
+			var user = get_user();
+			ga('send', 'event', 'Apoyos', 'WantHelp', user);
 		});
 	});
 });
 
 function init_endpoints(){
-	//var ROOT = 'https://capicptest.appspot.com/_ah/api';
-	var host = window.location.host;
-	var ROOT = '//' + host + '/_ah/api';
+	var ROOT = 'https://tusaludapp.appspot.com/_ah/api';
+	//var host = window.location.host;
+	//var ROOT = '//' + host + '/_ah/api';
 	gapi.client.load('doctors', 'v1', function() {
 
 	}, ROOT);

@@ -20,12 +20,14 @@
 				<table class="table">
 					<tr>
 						<th>Nombre completo</th>
+						<th>Invitado por</th>
 						<th>Especialidades</th>
 						<th>Correo</th>
 						<th></th>
 					</tr>
 					<tr ng-repeat="doctor in doctors | filter:{sent:false}">
 						<td>{{doctor.full_name}}</td>
+						<td>{{doctor.invited_by}}</td>
 						<td>{{doctor.specialities}}</td>
 						<td>{{doctor.email}}</td>
 						<td>
@@ -38,25 +40,21 @@
 				<table class="table">
 					<tr>
 						<th>Nombre completo</th>
+						<th>Invitado por</th>
 						<th>Especialidades</th>
 						<th>Correo</th>
 						<th>Encuesta abierta</th>
-						<th>Quiere probar?</th>
 						<th></th>
 					</tr>
 					<tr ng-repeat="doctor in doctors | filter:{sent:true}">
 						<td>{{doctor.full_name}}</td>
+						<td>{{doctor.invited_by}}</td>
 						<td>{{doctor.specialities}}</td>
 						<td>{{doctor.email}}</td>
 						<td>
 							<span class="glyphicon glyphicon-ok" ng-show="doctor.poll_open"></span>
 							<span class="glyphicon glyphicon-remove" ng-show="!doctor.poll_open"></span>
 						</td>
-						<td>
-							<span class="glyphicon glyphicon-ok" ng-show="doctor.want_test"></span>
-							<span class="glyphicon glyphicon-remove" ng-show="!doctor.want_test"></span>
-						</td>
-
 					</tr>
 				</table>
 

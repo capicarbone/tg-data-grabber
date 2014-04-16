@@ -18,6 +18,7 @@ JINJA_ENVIROMENT = jinja2.Environment(
     autoescape=True
 )
 
+
 class MainPageWithDoctor(webapp.RequestHandler):
     def get(self, name=""):
 
