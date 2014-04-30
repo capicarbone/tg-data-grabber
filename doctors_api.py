@@ -18,7 +18,11 @@ email_body = u"""
 
     Buenas Dr(a). %s,
 
-    Mi nombre es Carlos Pinelly. Soy estudiante de la Universidad Nacional Experimental de Guayana (UNEG). Actualmente me encuentro realizando mi trabajo de grado para optar a mi título de Ingeniero en Informática. Mi investigación está orientada al desarrollo de una aplicación móvil dirigida a la área médica y quizás usted podría ayudarme. En el siguiente enlace encontrará una encuesta electrónica que me permitirá recolectar cierta información necesaria para mi investigación la cual espero pueda tomarse unos minutos para responder.
+    Mi nombre es Carlos Pinelly. Posiblemente haya recibido anteriormente un correo de mi parte hablándole sobre mi investigación.
+
+    Soy estudiante de la Universidad Nacional Experimental de Guayana (UNEG). Actualmente me encuentro realizando mi trabajo de grado para optar a mi título de Ingeniero en Informática.
+
+    Mi investigación está orientada al desarrollo de una aplicación móvil dirigida a la área médica y quizás usted podría ayudarme. En el siguiente enlace encontrará una encuesta electrónica que me permitirá recolectar cierta información necesaria para mi investigación, le estaría enormemente agradecido si pudiera tomarse unos minutos para responderla.
 
     https://docs.google.com/forms/d/1LrQhbwlv-6Xj4GFPG_5G3iecAveEV8fH9g92l4V4DgQ/viewform
 
@@ -26,7 +30,7 @@ email_body = u"""
 
     http://tusaludapp.appspot.com/
 
-    Sin mas que decir, me despido agradeciendo su apoyo en mi investigación.
+    Sin mas que decir, me despido agradeciendo todo su apoyo en mi investigación.
 
     Saludos.
 """
